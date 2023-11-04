@@ -1,11 +1,13 @@
-from typing import List
+from typing import List, Literal
 from datetime import datetime, timedelta
 
 from db import collection
 
+GroupType = Literal["month", "day", "hour"]
+
 
 async def aggregate_payments(
-    dt_from: str, dt_upto: str, group_type: str
+    dt_from: str, dt_upto: str, group_type: GroupType
 ) -> dict[str, List[int] | List[str]]:
 
     dtfrom = datetime.fromisoformat(dt_from)
